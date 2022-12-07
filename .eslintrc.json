@@ -20,6 +20,7 @@
         "linebreak-style":"off",
         "react/react-in-jsx-scope":"off",
         "react/jsx-filename-extension":"off",
+        "react/jsx-one-expression-per-line": "off",
         "no-unused-vars": "off",
         "no-console": "off",
         "jsx-a11y/label-has-associated-control": [ 2, {
@@ -28,7 +29,5 @@
             "controlComponents": ["CustomInput"],
             "depth": 3
           }]
-        },
-        "import/no-named-as-default":"off",
-        "react/jsx-no-useless-fragment":"off"
-    }
+        }
+ }

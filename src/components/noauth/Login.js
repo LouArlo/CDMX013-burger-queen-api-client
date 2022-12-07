@@ -1,13 +1,17 @@
+/* eslint-disable react/button-has-type */
 import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../buttons/Modal';
 import '../views/login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [statusModalHelp, setStatusModalHelp] = useState(false);
+  const [ModalErrorLogin, setModalErrorLogin] = useState(false);
   const navigate = useNavigate();
-  //console.log(email, password);
+  console.log(email, password);
 
   const handleLogin = () => {
     axios
@@ -25,16 +29,29 @@ function Login() {
       )
       .then((res) => {
         // console.log(res.data.token);
-        navigate('/dashboard');
+        navigate('/home');
       })
-      .catch((error) => console.error('Error:', error));
+      .catch((error) => {
+        /* console.error('Error:', error); */
+        setModalErrorLogin(true);
+        return (
+          <Modal status={ModalErrorLogin} changeStatus={setModalErrorLogin}>
+            <container>
+              <h3>Datos Incorrectos/Usuario Inexistente</h3>
+              <button onClick={() => setStatusModalHelp(!statusModalHelp)}>
+                Aceptar
+              </button>
+            </container>
+          </Modal>
+        );
+      });
   };
 
   return (
     <div className="containerPrincipal">
-      <h1>BQ Restarurante </h1>
+      <h1>BQ Restaurante </h1>
       <div className="containerSecundary">
-        <h2>Bienvenidos!</h2>
+        <h2>Bienvenido!</h2>
         <div className="form-group">
           <p>Correo electrónico</p>
           <input
@@ -55,9 +72,23 @@ function Login() {
           <button onClick={handleLogin} className="appButton" type="button">
             iniciar sesión
           </button>
-          <button onClick={handleLogin} className="appHelp" type="button">
-            Ayuda
+          <button
+            onClick={() => setStatusModalHelp(!statusModalHelp)}
+            className="appHelp"
+            type="button"
+          >
+            {' '}
           </button>
+          <Modal status={statusModalHelp} changeStatus={setStatusModalHelp}>
+            <container>
+              <h3>olvido su contraseña?</h3>
+              <p> * si es colaborador dirijase con el administrador</p>
+              <p> * si es administrador dirijase a soporte técnico</p>
+              <button onClick={() => setStatusModalHelp(!statusModalHelp)}>
+                Aceptar
+              </button>
+            </container>
+          </Modal>
         </div>
       </div>
     </div>

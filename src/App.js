@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import Login from './components/noauth/Login';
-import Dashboard from './components/auth/Dashboard';
+import Home from './components/auth/Home';
 
 const router = createBrowserRouter([
   {
@@ -9,8 +9,8 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/dashboard',
-    element: <Dashboard />,
+    path: '/home',
+    element: <Home />,
   },
 ]);
 
