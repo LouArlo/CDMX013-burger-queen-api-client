@@ -1,8 +1,9 @@
-import React from "react";
-
-export const Registerproducts = () => {
-    return(
-        <div>Registerproducts</div>
-    )
-    
+function Products() {
+  return (
+    <div>
+      <h3>Vista de Productos</h3>
+    </div>
+  );
 }
+
+export default Products;

@@ -54,7 +54,7 @@ const Burger = styled.div`
     background: #fff;
     border-radius: 9px;
     opacity: 1;
-    left: 90px;
+    left: 244px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);

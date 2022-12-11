@@ -11,7 +11,6 @@ function Login() {
   const [statusModalHelp, setStatusModalHelp] = useState(false);
   const [ModalErrorLogin, setModalErrorLogin] = useState(false);
   const navigate = useNavigate();
-  console.log(email, password);
 
   const handleLogin = () => {
     axios
@@ -29,21 +28,12 @@ function Login() {
       )
       .then((res) => {
         // console.log(res.data.token);
+        console.log(res.data);
         navigate('/home');
       })
       .catch((error) => {
         /* console.error('Error:', error); */
         setModalErrorLogin(true);
-        return (
-          <Modal status={ModalErrorLogin} changeStatus={setModalErrorLogin}>
-            <container>
-              <h3>Datos Incorrectos/Usuario Inexistente</h3>
-              <button onClick={() => setStatusModalHelp(!statusModalHelp)}>
-                Aceptar
-              </button>
-            </container>
-          </Modal>
-        );
       });
   };
 
@@ -91,6 +81,14 @@ function Login() {
           </Modal>
         </div>
       </div>
+      <Modal status={ModalErrorLogin} changeStatus={setModalErrorLogin}>
+        <container>
+          <h3>Datos Incorrectos/Usuario Inexistente</h3>
+          <button onClick={() => setModalErrorLogin(!ModalErrorLogin)}>
+            Aceptar
+          </button>
+        </container>
+      </Modal>
     </div>
   );
 }

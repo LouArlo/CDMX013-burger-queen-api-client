@@ -1,6 +1,9 @@
-import React from "react";
+function Users() {
+  return (
+    <div>
+      <h3>Vista de Usuarios</h3>
+    </div>
+  );
+}
 
-export const Updadateusers = () =>
-return (
-    <div>Updadateusers</div>
-)
+export default Users;

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom/dist';
 import styled from 'styled-components';
 import BurgerButton from '../buttons/BurgerButton';
+import Products from './Products';
+import Users from './Users';
 
-export default function Home() {
+export default function Service() {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     // if is true this convert to falso and viscervers
@@ -14,20 +16,18 @@ export default function Home() {
       <NavContainer>
         <h2>Burger Queen</h2>
         <div className={`links ${clicked ? 'active' : ''}`}>
-          <Link to="/kitchen">Cocina</Link>
-          <Link to="/service">Servicio</Link>
-          <Link to="/admin">Administracion</Link>
+          <Link to="/admin/users">Usuarios</Link>
+          <Link to="/admin/products">Productos</Link>
+          <Link to="/home">Home</Link>
         </div>
         <div className="burger">
           <BurgerButton clicked={clicked} handleClick={handleClick} />
-
         </div>
       </NavContainer>
       <Outlet />
     </>
   );
 }
-
 const NavContainer = styled.nav`
   h2 {
     color: white;
@@ -51,42 +51,5 @@ const NavContainer = styled.nav`
       display: none;
     }
   }
-  .links {
-    position: absolute;
-    top: -700px;
-    left: -2000px;
-    margin-left: auto;
-    margin-right: auto;
-    text_align: center;
-    a {
-      color: black;
-      font-size: 2rem;
-      display: block;
-    }
-    @media (min-width: 768px) {
-      position: initial;
-      margin: 0;
-      a {
-        font-size: 1rem;
-        color: white;
-        display: inline;
-      }
-    }
-  }
-  .links.active {
-    width: 100%;
-    display: block;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 30%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    a {
-      color: #333;
-      font-size: 2rem;
-      margin-top: 3rem;
-    }
-  }
+
 `;

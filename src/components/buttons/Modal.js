@@ -35,8 +35,8 @@ const Modal = ({ children, status, changeStatus }) => (
 export default Modal;
 
 const Overlay = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 60vw;
+  height: 70vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ const Overlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: 500px;
+  width: 400px;
   min-height: 100px;
   background: #fff;
   position: relative;
