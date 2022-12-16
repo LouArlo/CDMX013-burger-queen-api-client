@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom/dist';
 import styled from 'styled-components';
-// import NavContainer from './Home';
 import BurgerButton from '../buttons/BurgerButton';
-import OrderProducts from './OrderProducts';
 import StatusService from './StatusService';
+import Desayunos from './Desayunos';
+import Almuerzos from './Almuerzos';
 
 export default function Service() {
   const [clicked, setClicked] = useState(false);
@@ -17,7 +17,8 @@ export default function Service() {
       <NavContainer>
         <h2>Burger Queen</h2>
         <div className={`links ${clicked ? 'active' : ''}`}>
-          <Link to="/service/orderproducts">Ordenes</Link>
+          <Link to="/service/Desayunos">Desayunos</Link>
+          <Link to="/service/Almuerzos">Almuerzos</Link>
           <Link to="/service/statusservice">Status</Link>
           <Link to="/home">Home</Link>
         </div>

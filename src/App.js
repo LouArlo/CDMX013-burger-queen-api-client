@@ -13,9 +13,10 @@ import Home from './components/auth/Home';
 import Users from './components/auth/Users';
 import Products from './components/auth/Products';
 import Kitchen from './components/auth/Kitchen';
-import OrderProducts from './components/auth/OrderProducts';
 import StatusService from './components/auth/StatusService';
 import Admin from './components/auth/Admin';
+import Desayunos from './components/auth/Desayunos';
+import Almuerzos from './components/auth/Almuerzos';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
     element: <Service />,
     children: [
       {
-        path: '/service/orderproducts',
-        element: <OrderProducts />,
+        path: '/service/desayunos',
+        element: <Desayunos />,
+      },
+      {
+        path: '/service/almuerzos',
+        element: <Almuerzos />,
       },
       {
         path: '/service/statusservice',

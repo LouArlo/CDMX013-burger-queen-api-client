@@ -3,10 +3,11 @@ import Home from './Home';
 import Kitchen from './Kitchen';
 import Service from './Service';
 import Admin from './Admin';
-import OrderProducts from './OrderProducts';
 import StatusService from './StatusService';
 import Users from './Users';
 import Products from './Products';
+import Desayunos from './Desayunos';
+import Almuerzos from './Almuerzos';
 
 const routersAuth = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const routersAuth = createBrowserRouter([
         element: <Service />,
         children: [
           {
-            path: '/home/service/orderproducts',
-            element: <OrderProducts />,
+            path: '/home/service/desayunos',
+            element: <Desayunos />,
+          },
+          {
+            path: '/home/service/Almuerzos',
+            element: <Almuerzos />,
           },
           {
             path: '/home/service/statusservice',

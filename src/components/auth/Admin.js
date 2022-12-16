@@ -33,7 +33,7 @@ const NavContainer = styled.nav`
     color: white;
     font-weight: 400;
     top: 0px;
-    left: 10px;
+    left: 119px;
   }
   padding: 4rem;
   background-color: #333;
