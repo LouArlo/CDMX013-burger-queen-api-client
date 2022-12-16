@@ -34,23 +34,28 @@ const OrderContainer = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start; 
 }
-
-p {
-  left: 39px;
-  top: 445px;
-  font-size: x-large;
-  position: absolute;
-}
 .clientView{
   display: flex;
   grid-row:3;
 }
+
+p {
+  display: inline-block;
+    /* left: 39px; */
+    /* top: 445px; */
+    font-size: x-large;
+    /* position: absolute; */
+    margin-left: 4px;
+    margin-top: 50px;
+}
+
 .clientInput {
   background-color: black;
-    color: white;
-    position: absolute;
-    left: 118px;
-    top: 476px;
+  color: white;
+  margin-left: 20px;
+  margin-top: 50px;
+  width:300px;
+  height:20px;
 } 
 h3 {
     grid-column: span 5;
@@ -87,6 +92,16 @@ button:hover{
     justify-content: space-between;
     align-content: flex-start;
 } 
+.addBotton{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.restBotton{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
 .menuStyle {
     display: flex;
     grid-column: span 2;
@@ -103,7 +118,7 @@ button:hover{
   } 
 .components{
   padding: 10px;
-  width: 663px;
+  width: 1000px;
   height: 451px;
   display: inline-block;
   background: lightsteelblue;
@@ -116,14 +131,16 @@ button:hover{
 }
 .layoutname{
   display: inline-block;
-  width: 250px;
+  width: 415px;
 }
 .layoutprice{
   display: inline-block;
-  width: 45px;
+  width: 200px;
+  /* display:flex; */
 }
 .layoutqty{
   display: inline-block;
+  width: 25px;
 }
 element.style {
   display: inline-block;
