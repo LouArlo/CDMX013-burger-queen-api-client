@@ -8,6 +8,7 @@ import Users from './Users';
 import Products from './Products';
 import Desayunos from './Desayunos';
 import Almuerzos from './Almuerzos';
+import Orders from './Orders';
 
 const routersAuth = createBrowserRouter([
   {
@@ -23,12 +24,16 @@ const routersAuth = createBrowserRouter([
             element: <Desayunos />,
           },
           {
-            path: '/home/service/Almuerzos',
+            path: '/home/service/almuerzos',
             element: <Almuerzos />,
           },
           {
             path: '/home/service/statusservice',
             element: <StatusService />,
+          },
+          {
+            path: '/home/service/orders',
+            element: <Orders />,
           },
         ],
       },

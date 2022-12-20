@@ -1,27 +1,29 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 // const flag = true;
+console.log(useEffect, 'useEffect');
 
 export default function Menu() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [order, setOrder] = useState({
+  const initialValue = {
     client: '',
-    productOrder: [],
     status: 'pending',
-  });
+  };
+  const [order, setOrder] = useState({ ...initialValue });
+
   const [orderProducts, setOrderProducts] = useState([]);
-  console.log(orderProducts);
+  // console.log('orderproduct ', orderProducts);
   useEffect(() => {
     fetch('http://localhost:8080/products')
       .then((response) => response.json())
       .then((allproducts) => setProducts(allproducts))
       .catch((error) => console.error('error:', error));
   }, []);
-
-  // array con pproducto y cantidad
-  function Add(product, flag) {
+  let total = 0;
+  function AddandRest(product, flag, accion) {
     let value = 0;
     if (flag) {
       value = 1;
@@ -41,13 +43,25 @@ export default function Menu() {
         }
         return item;
       });
+      // add to order
       if (agregar) {
         const newItem = {
           ...product,
           qty: 1,
         };
+        // console.log('newItem ', newItem);
         newOrderproducts.push(newItem);
       }
+      // rest to part of order
+      if (!accion) {
+        newOrderproducts.splice(product.name, 1);
+      }
+      // obtain total of order
+      total = 0;
+      for (let i = 0; i < newOrderproducts.length; i += 1) {
+        total += newOrderproducts[i].price * newOrderproducts[i].qty;
+      }
+      console.log(total);
       return newOrderproducts;
     });
   }
@@ -56,18 +70,46 @@ export default function Menu() {
 
     setOrder((prevOrder) => ({ ...prevOrder, client: clientName }));
   }
+  function sendToCook(newOrderproducts) {
+    // console.log('cocinando......', orderProducts);
+    axios
+      .post(
+        'http://localhost:8080/orders',
+        JSON.stringify({
+          client: order.client,
+          productOrder: orderProducts,
+          status: 'cooking',
+        }),
+        {
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        },
+      )
+      .then((res) => {
+        console.log(res.data);
+        setOrder({ ...initialValue });
+        setOrderProducts([]);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // setModalErrorLogin(true);
+      });
+  }
+
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.category === '1'));
   }, [products]);
+
   return (
     <ul className="orderStyle">
       <div className="productView">
         {filteredProducts.map((product) => (
           <button
-            onClick={() => Add(product, true)}
+            onClick={() => AddandRest(product, true, true)}
             className="product"
             type="button"
-            key={product.name}
+            key={product._id}
           >
             {product.name} $ {product.price}
           </button>
@@ -83,37 +125,42 @@ export default function Menu() {
       </div>
       <div className="components">
         {orderProducts.map((element) => (
-          <>
+          <div key={element._id}>
             <p className="layoutname">{element.name}</p>
             <p className="layoutprice">$ {element.price}</p>
             <button
-              onClick={() => Add(element, false)}
+              onClick={() => AddandRest(element, false, true)}
               className="restBotton"
               type="button"
-              key={element.name}
+
             >
               -
             </button>
             <p className="layoutqty">{element.qty}</p>
             <button
-              onClick={() => Add(element, true)}
+              onClick={() => AddandRest(element, true, true)}
               className="addBotton"
               type="button"
-              key={element.name}
+
             >
               +
             </button>
+            <button
+              onClick={() => AddandRest(element, false, false)}
+              className="deleteBotton"
+              type="button"
+
+            >
+              X
+            </button>
             <div />
-          </>
+            <p className="total">Total $ {total}</p>
+          </div>
         ))}
       </div>
+      <button onClick={sendToCook} className="sendBotton" type="button">
+        Enviar a Cocina
+      </button>
     </ul>
   );
 }
-const x = styled.div`
-  display: flex;
-  flex-direction: column;
-  top: 659px;
-  left: 120px;
-  position: absolute;
-`;

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import MenuAlmuerzo from '../functions/MenuAlmuerzo';
 
+console.log(useEffect, 'useState de almuerzos');
 function Almuerzos() {
   return (
     <OrderContainer>

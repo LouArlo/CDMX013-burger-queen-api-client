@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '../functions/Menu';
+
+console.log(useEffect, 'useState de desayuno');
 
 function Desayunos() {
   return (
@@ -29,10 +31,6 @@ const OrderContainer = styled.div`
 .productView {
   grid-column: 1;
   grid-column-end: 6;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  justify-content: flex-start; 
 }
 .clientView{
   display: flex;
@@ -58,7 +56,7 @@ p {
   height:20px;
 } 
 h3 {
-    grid-column: span 5;
+    grid-column: span 4;
     grid-row: span 1;
     display: flex;
     flex-direction: column;
@@ -69,14 +67,15 @@ h3 {
 button {
     width: 100px;
     height:70px;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     background: aliceblue;
     font-size: medium;
     border-radius: 5px;
     margin-right: 42px;
-    margin-top: 18px;
+    /* margin-top: 18px; */
     border:none;
+    display:inline-block;
 }
 button:hover{
   background: lightsteelblue;
@@ -101,6 +100,7 @@ button:hover{
   width: 20px;
   height: 20px;
   display: inline-block;
+  margin-right: 12px;
 }
 .menuStyle {
     display: flex;
@@ -117,32 +117,61 @@ button:hover{
     display: flex;
   } 
 .components{
-  padding: 10px;
-  width: 1000px;
-  height: 451px;
-  display: inline-block;
-  background: lightsteelblue;
-  margin-top: 130px;
-  font-size:18px;
+  padding: 1px;
+    width: 536px;
+    height: 411px;
+    display: inline-block;
+    background: lightsteelblue;
+    margin-top: 5px;
+    font-size: 12px;
 }
 .headerOrder{
   top:540px;
   left:56px;
 }
 .layoutname{
+  font-size: 14px;
   display: inline-block;
-  width: 415px;
+  width: 150px;
+  margin-left: 4px;
+  margin-top: 16px;
 }
 .layoutprice{
   display: inline-block;
-  width: 200px;
-  /* display:flex; */
+  width: 130px;
+  font-size: 14px;
+  margin-left: 4px;
+  margin-top: 16px;
 }
 .layoutqty{
   display: inline-block;
   width: 25px;
+  font-size: 14px;
+  margin-left: 4px;
+  margin-top: 16px;
+
+}
+.deleteBotton{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 12px;
+}
+.sendBotton{
+  width: 160px;
+    height: 63px;
+    background-color: lightgreen;
+    /* margin-left: 546px; */
+    display: inline-block;
+    left: 600px;
+    position: fixed;
 }
 element.style {
   display: inline-block;
+}
+.total{
+  position: absolute;
+    top: 825px;
+    left: 48px;
 }
 `;
